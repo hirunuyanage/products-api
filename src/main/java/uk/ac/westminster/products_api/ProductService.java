@@ -10,6 +10,23 @@ public class ProductService {
 
     private final List<Product> products = new ArrayList<>();
 
+    public ProductService() {
+
+        products.add(new DigitalProduct(
+                1L,
+                "Java E-book",
+                1500.0,
+                "https://example.com/java-ebooks"
+        ));
+
+        products.add(new PhysicalProduct(
+                2L,
+                "Laptop",
+                250000.0,
+                2.5
+        ));
+    }
+
     public List<Product> getAllProducts() {
         return products;
     }
