@@ -1,9 +1,21 @@
 package uk.ac.westminster.products_api;
 
-public class DigitalProduct extends Product{
+public class DigitalProduct extends Product implements Discountable {
 
+    private double discountedPrice;
     private String downloadUrl;
     private double fileSizeMB;
+
+    @Override
+    public void applyDiscount(double rate) {
+        discountedPrice = getPrice() * (1 - rate);
+    }
+
+    @Override
+    public double getDiscountedPrice() {
+        return discountedPrice;
+    }
+
 
     public DigitalProduct(){
         super();
@@ -21,5 +33,11 @@ public class DigitalProduct extends Product{
 
     public double getFileSizeMB(){
         return fileSizeMB;
+    }
+
+    @Override
+    public String getSummary() {
+        return "Digital: " + getName()
+                + " | Download: " + downloadUrl;
     }
 }
